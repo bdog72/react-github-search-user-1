@@ -1,15 +1,11 @@
 //
 //
 
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { GithubContext } from '../context/context';
+
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
-
-const Card = () => {
-  return <h2>card component</h2>;
-};
 
 const Wrapper = styled.article`
   background: var(--clr-white);
@@ -19,7 +15,7 @@ const Wrapper = styled.article`
   border-bottom-right-radius: var(--radius);
   position: relative;
   &::before {
-    content: 'user';
+    content: 'bozo';
     position: absolute;
     top: 0;
     left: 0;
@@ -65,9 +61,11 @@ const Wrapper = styled.article`
       }
     }
   }
+
   .bio {
     color: var(--clr-grey-3);
   }
+
   .links {
     p,
     a {
@@ -79,6 +77,7 @@ const Wrapper = styled.article`
         font-size: 1.3rem;
       }
     }
+
     a {
       color: var(--clr-primary-5);
       transition: var(--transition);
@@ -91,4 +90,46 @@ const Wrapper = styled.article`
     }
   }
 `;
+
+const Card = () => {
+  const { githubUser } = React.useContext(GithubContext);
+  const {
+    avatar_url,
+    html_url,
+    name,
+    company,
+    blog,
+    bio,
+    location,
+    twitter_username,
+  } = githubUser;
+
+  return (
+    <Wrapper>
+      <header>
+        <img src={avatar_url} alt={name} />
+        <div>
+          <h4>{name}</h4>
+          <p>@{twitter_username || 'john_doe'}</p>
+        </div>
+        <a href={html_url} target='_blank' rel='noopener noreferrer'>
+          follow
+        </a>
+      </header>
+      <p className='bio'>{bio}</p>
+      <div className='links'>
+        <p>
+          <MdBusiness /> {company}
+        </p>
+        <p>
+          <MdLocationOn /> {location || 'mars'}
+        </p>
+        <a href={`https://${blog}`} target='_blank' rel='noopener noreferrer'>
+          <MdLink /> {blog}
+        </a>
+      </div>
+    </Wrapper>
+  );
+};
+
 export default Card;
