@@ -10,11 +10,20 @@ import * as serviceWorker from './serviceWorker';
 import { GithubProvider } from './context/context';
 import { Auth0Provider } from '@auth0/auth0-react';
 
+// dev-u05q57yo.us.auth0.com
+// 9mfYxjMdIo4Ng8c8c86tZn6a6rGSUXZo
+
 ReactDOM.render(
   <React.StrictMode>
-    <GithubProvider>
-      <App />
-    </GithubProvider>
+    <Auth0Provider
+      domain='dev-u05q57yo.us.auth0.com'
+      clientId='9mfYxjMdIo4Ng8c8c86tZn6a6rGSUXZo'
+      redirectUri={window.location.origin}
+    >
+      <GithubProvider>
+        <App />
+      </GithubProvider>
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
