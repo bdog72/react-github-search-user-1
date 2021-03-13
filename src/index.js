@@ -1,17 +1,22 @@
 //
 //
 
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
 import App from './App';
+
 import * as serviceWorker from './serviceWorker';
 import { GithubProvider } from './context/context';
+
 import { Auth0Provider } from '@auth0/auth0-react';
 
 // dev-u05q57yo.us.auth0.com
 // 9mfYxjMdIo4Ng8c8c86tZn6a6rGSUXZo
+
+// test@test.com
+// test1234_
 
 ReactDOM.render(
   <React.StrictMode>

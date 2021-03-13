@@ -13,6 +13,7 @@ function App() {
       <Switch>
         <Route exact={true} path='/'>
           <Dashboard></Dashboard>
+          <PrivateRoute></PrivateRoute>
         </Route>
         <Route path='/login'>
           <Login></Login>
